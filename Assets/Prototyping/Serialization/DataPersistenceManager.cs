@@ -21,7 +21,7 @@ public class DataPersistenceManager : MonoBehaviour
        string json = JsonUtility.ToJson(data);
        string filePath = Application.dataPath + SerializationUtils.MakeUniqueFileName(data.levelName) + ".json";
 
-       System.IO.File.WriteAllText(Application.dataPath + "/levelData.json", json);
+       System.IO.File.WriteAllText(Application.dataPath + "/testlevelData.json", json);
    }
 
     public LevelData LoadLevelData(string fileName)

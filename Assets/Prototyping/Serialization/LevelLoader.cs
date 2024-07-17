@@ -6,12 +6,13 @@ public class LevelLoader : MonoBehaviour
 { 
     [SerializeField] DataPersistenceManager dataPersistenceManager;
     [SerializeField] string LevelFilePath;
+    [SerializeField] LevelObjectDB levelObjectDB;
 
     // Start is called before the first frame update
     void Start()
     {
         dataPersistenceManager = DataPersistenceManager.instance;
-        dataPersistenceManager.LoadLevelData(LevelFilePath);
+        GenerateLevel(dataPersistenceManager.LoadLevelData(LevelFilePath));
     }
 
 
@@ -19,7 +20,7 @@ public class LevelLoader : MonoBehaviour
     {
         foreach (LevelObject obj in data.levelObjects)
         {
-            GameObject go = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            GameObject go = Instantiate(levelObjectDB.GetLevelObject(obj.name));
             go.transform.position = new Vector3(obj.x, obj.y, obj.z);
         }
 

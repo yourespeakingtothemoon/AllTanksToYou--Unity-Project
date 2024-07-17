@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: PrototypeDB
   m_EditorClassIdentifier: 
   levelObjects:
-  - name: Cube
+  - name: Cube (1)
     prefab: {fileID: 4712805603802278225, guid: 84ef14c64e2add04fb26b6f4b68bb4da, type: 3}
     EditorIcon: {fileID: 0}

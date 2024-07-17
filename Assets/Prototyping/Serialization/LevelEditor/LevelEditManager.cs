@@ -12,7 +12,7 @@ public class LevelEditManager : MonoBehaviour
 
     [SerializeField] public Button buttonPrefab;
     [SerializeField]public Canvas canvas;
-
+    [SerializeField] public DataPersistenceManager dataPersistenceManager;
     public void SetSelectedObject(GameObject obj)
     {
         selectedObject = obj;
@@ -50,9 +50,14 @@ public class LevelEditManager : MonoBehaviour
             
             mousePos.y = 0.5f;
             Instantiate(selectedObject, mousePos, Quaternion.identity);
-            levelData.levelObjects.Add(new LevelObjectData(selectedObject.name, mousePos));
+            levelData.AddObject(selectedObject.name, mousePos.x, mousePos.y, mousePos.z);
         }
         }
+    }
+
+    public void SaveLevel()
+    {
+        dataPersistenceManager.SaveLevelData(levelData);
     }
 
 }

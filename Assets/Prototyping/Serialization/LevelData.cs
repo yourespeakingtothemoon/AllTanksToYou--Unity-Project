@@ -5,7 +5,6 @@ using UnityEngine;
 [System.Serializable]
 public struct LevelObject{
     public string name;
-    public int id;
     public float x;
     public float y;
     public float z;
@@ -17,15 +16,14 @@ public class LevelData
     public List<LevelObject> levelObjects = new List<LevelObject>();
     public List<Transform> MPSpawnPoints = new List<Transform>();
 
-    public string levelName;
-    public string levelDescription;
-    public string levelAuthor;
-    public float levelVersion;
+    public string levelName = "Default";
+    public string levelDescription = "A Level";
+    public string levelAuthor = "Computer";
+    public float levelVersion = 1.0f;
 
-    public void AddObject(string name, int id, float x, float y, float z){
+    public void AddObject(string name, float x, float y, float z){
         LevelObject obj = new LevelObject();
         obj.name = name;
-        obj.id = id;
         obj.x = x;
         obj.y = y;
         obj.z = z;

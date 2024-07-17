@@ -392,6 +392,7 @@ MonoBehaviour:
   selectedObject: {fileID: 0}
   buttonPrefab: {fileID: 7677892538469161603, guid: 4aff272ae7b1b55438f8b0ca1d9e656c, type: 3}
   canvas: {fileID: 1445934117}
+  dataPersistenceManager: {fileID: 769005971}
 --- !u!1 &769005966
 GameObject:
   m_ObjectHideFlags: 0
@@ -404,6 +405,7 @@ GameObject:
   - component: {fileID: 769005969}
   - component: {fileID: 769005968}
   - component: {fileID: 769005967}
+  - component: {fileID: 769005971}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
@@ -498,6 +500,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &769005971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 769005966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65d67dd51629cad4abeaeabd8923a33a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &940978724
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1105,6 +1119,26 @@ PrefabInstance:
     - target: {fileID: 5504848072334918310, guid: b2eef1741c7813d4bb060fef42b9c915, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6265174046164282478, guid: b2eef1741c7813d4bb060fef42b9c915, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6265174046164282478, guid: b2eef1741c7813d4bb060fef42b9c915, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 697841102}
+    - target: {fileID: 6265174046164282478, guid: b2eef1741c7813d4bb060fef42b9c915, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SaveLevel
+      objectReference: {fileID: 0}
+    - target: {fileID: 6265174046164282478, guid: b2eef1741c7813d4bb060fef42b9c915, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: LevelEditManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6265174046164282478, guid: b2eef1741c7813d4bb060fef42b9c915, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

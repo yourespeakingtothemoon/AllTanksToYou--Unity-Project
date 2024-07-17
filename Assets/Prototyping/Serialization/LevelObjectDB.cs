@@ -16,4 +16,16 @@ public struct LevelObjectLiteral
 public class LevelObjectDB : ScriptableObject
 {
   public List<LevelObjectLiteral> levelObjects = new List<LevelObjectLiteral>();
+
+  public GameObject GetLevelObject(string name)
+  {
+    foreach (LevelObjectLiteral obj in levelObjects)
+    {
+      if (obj.name == name)
+      {
+        return obj.prefab;
+      }
+    }
+    return null;
+  }
 }
