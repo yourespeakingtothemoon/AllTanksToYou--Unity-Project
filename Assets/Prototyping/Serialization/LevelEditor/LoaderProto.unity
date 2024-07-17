@@ -357,7 +357,7 @@ MonoBehaviour:
   m_Speed: 12
   m_TurnSpeed: 180
   m_Barrel: {fileID: 89619988}
-  m_BulletPrefab: {fileID: 5190576354322609754, guid: 1303375ec315fe84c8c2a80edc9a90d5, type: 3}
+  m_BulletPrefab: {fileID: 4510650994205015952, guid: 75af25b2f85f67a429a6113df5c6ecb7, type: 3}
 --- !u!54 &697841101
 Rigidbody:
   m_ObjectHideFlags: 0
