@@ -7,12 +7,14 @@ public class LevelLoader : MonoBehaviour
     [SerializeField] DataPersistenceManager dataPersistenceManager;
     [SerializeField] string LevelFilePath;
     [SerializeField] LevelObjectDB levelObjectDB;
+    [SerializeField] GameMode gameMode;
 
     // Start is called before the first frame update
     void Start()
     {
         dataPersistenceManager = DataPersistenceManager.instance;
         GenerateLevel(dataPersistenceManager.LoadLevelData(LevelFilePath));
+        gameMode.Initalize();
     }
 
 

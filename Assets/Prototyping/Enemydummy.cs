@@ -36,5 +36,9 @@ public class Enemydummy : MonoBehaviour
         }
     }
 
-
+    void OnDestroy()
+    {
+        GameMode gameMode = FindObjectOfType<GameMode>();
+        gameMode.RemoveEnemy(this);
+    }
 }
