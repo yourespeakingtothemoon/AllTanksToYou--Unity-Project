@@ -73,7 +73,8 @@ public class Tank : MonoBehaviour
     public void Shoot()
     {
        
-        Instantiate(m_BulletPrefab, m_FirePoint.transform.position, m_Barrel.transform.rotation);
+        GameObject bullet = Instantiate(m_BulletPrefab, m_FirePoint.transform.position, m_Barrel.transform.rotation);
+        bullet.tag = gameObject.tag;
     }
     public void Reset()
     {

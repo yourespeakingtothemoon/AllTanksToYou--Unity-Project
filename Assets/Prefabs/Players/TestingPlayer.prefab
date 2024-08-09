@@ -150,6 +150,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 5943326981922409941}
   m_SourcePrefab: {fileID: 100100000, guid: b9109baa460c44c459f6ccb8a2e4de4c, type: 3}
+--- !u!23 &830801847602598775 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7635826562936255635, guid: b9109baa460c44c459f6ccb8a2e4de4c, type: 3}
+  m_PrefabInstance: {fileID: 2130063889468364826}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1247189248770778443 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: b9109baa460c44c459f6ccb8a2e4de4c, type: 3}
@@ -292,8 +297,28 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 62b75e1f-4f36-4ede-bbef-36ffd05a1aa1
     m_ActionName: Tank/Reset[/Keyboard/r]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 6be2f3d1-cdec-4fe8-8b4f-954492038354
+    m_ActionName: Menus/Nav[/XInputControllerWindows/dpad,/XInputControllerWindows1/dpad,/XInputControllerWindows/leftStick,/XInputControllerWindows1/leftStick,/XInputControllerWindows/rightStick,/XInputControllerWindows1/rightStick,/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d,/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 3814772e-ed14-4bd6-8257-e576318d3b3f
+    m_ActionName: Menus/Select[/XInputControllerWindows/buttonSouth,/XInputControllerWindows1/buttonSouth,/Keyboard/backspace]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 479ac3bc-d073-4ca4-81dc-4a9326ab667c
+    m_ActionName: Menus/Start[/XInputControllerWindows/start,/XInputControllerWindows1/start,/Keyboard/enter]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 9967c373-99ba-44c9-b787-988a9518e3f6
+    m_ActionName: Menus/Back[/XInputControllerWindows/buttonEast,/XInputControllerWindows1/buttonEast,/Keyboard/backspace]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: bfc3990c-251e-486b-808f-3e316d2806f1
+    m_ActionName: Menus/Tab[/XInputControllerWindows/leftShoulder,/XInputControllerWindows1/leftShoulder,/XInputControllerWindows/rightShoulder,/XInputControllerWindows1/rightShoulder,/Keyboard/q,/Keyboard/e]
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
+  m_DefaultControlScheme: Controller
   m_DefaultActionMap: Tank
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
@@ -309,10 +334,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 002810cc40f2cfb4682c8dd2cf08c3d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayID: 0
   m_Tank: {fileID: 5943326981922409941}
   m_Canvas: {fileID: 0}
   ReticlePrefab: {fileID: 8067852293941280916, guid: b6813183fb513404fa368c1b0b90cfb2, type: 3}
   m_PlayerInput: {fileID: 6491332405577818780}
+  m_MeshRenderer_Tank: {fileID: 830801847602598775}
+  m_MeshRenderer_Gun: {fileID: 7207608248424292943}
+  m_MeshRenderer_Top: {fileID: 3649716050060066930}
+  stockTexts: []
+  assignedRespawnPoint: {fileID: 0}
 --- !u!114 &5943326981922409941
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -430,6 +461,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 8d97514d9e43e80468895114a8a0b01a, type: 3}
   m_PrefabInstance: {fileID: 2643187863582018335}
   m_PrefabAsset: {fileID: 0}
+--- !u!23 &3649716050060066930 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7635826562936255635, guid: 8d97514d9e43e80468895114a8a0b01a, type: 3}
+  m_PrefabInstance: {fileID: 2643187863582018335}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8218657764007749922
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -507,6 +543,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25e18092b3fd58d4b8ce6325a8a6838d, type: 3}
+--- !u!23 &7207608248424292943 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7635826562936255635, guid: 25e18092b3fd58d4b8ce6325a8a6838d, type: 3}
+  m_PrefabInstance: {fileID: 8218657764007749922}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8467946853513383625 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 25e18092b3fd58d4b8ce6325a8a6838d, type: 3}

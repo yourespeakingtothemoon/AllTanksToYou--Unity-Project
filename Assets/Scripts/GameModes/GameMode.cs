@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public enum GameGoalType
 {
@@ -12,12 +13,19 @@ public enum GameGoalType
     Objective
 }
 
+public interface IgamePlayerData
+{
+}
+
 public abstract class GameMode : MonoBehaviour
 {
+    [SerializeField] protected PlayerInput playerPrefab;
    [SerializeField] protected GameGoalType goalType = GameGoalType.None;
    [SerializeField] protected List<Player> players = new List<Player>();
    [SerializeField] protected GameRules gameRules = new GameRules();
     [SerializeField] public float TimeLimit = 300.0f;
+    [SerializeField] protected TimerText timerText;
+    protected float timeRemaining;
 
    public void EndGame()
    {

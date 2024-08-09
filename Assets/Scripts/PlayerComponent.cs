@@ -3,14 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using TMPro;
 
 
 public class PlayerComponent : MonoBehaviour
 {
+    public int PlayID;
     [SerializeField] private Tank m_Tank;
     [SerializeField] private Canvas m_Canvas;
     [SerializeField] private GameObject ReticlePrefab;
     [SerializeField] private PlayerInput m_PlayerInput;
+    [SerializeField] private MeshRenderer m_MeshRenderer_Tank;
+    [SerializeField] private MeshRenderer m_MeshRenderer_Gun;
+    [SerializeField] private MeshRenderer m_MeshRenderer_Top;
+    public TextMeshProUGUI[] stockTexts;
+    public GameObject assignedRespawnPoint;
+    public dmPlayerDataWrapper pData;
+
+    [SerializeField]public IgamePlayerData playerData;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,9 +31,26 @@ public class PlayerComponent : MonoBehaviour
         {
             m_PlayerInput = GetComponent<PlayerInput>();
         }
-        m_Tank.m_Faction = m_PlayerInput.user.id == 1 ? BulletFaction.red : BulletFaction.blue;
-
-        m_Tank.m_Reticle.GetComponent<ReticleControl>().SetColor(m_Tank.m_Faction == BulletFaction.red ? Color.red : Color.blue);
+        switch(PlayID)
+        {
+            case 1:
+            m_Tank.m_Reticle.GetComponent<ReticleControl>().SetColor(Color.red);
+            break;
+            case 2:
+            m_Tank.m_Reticle.GetComponent<ReticleControl>().SetColor(Color.blue);
+            break;
+            case 3:
+            m_Tank.m_Reticle.GetComponent<ReticleControl>().SetColor(Color.yellow);
+            break;
+            case 4:
+            m_Tank.m_Reticle.GetComponent<ReticleControl>().SetColor(Color.green);
+            break;
+            default:
+            m_Tank.m_Reticle.GetComponent<ReticleControl>().SetColor(Color.white);
+            break;
+        }
+        
+        
 
         if(m_PlayerInput.devices[0].displayName == "Keyboard" || m_PlayerInput.devices[0].displayName == "Mouse")
         {
@@ -60,6 +87,37 @@ public class PlayerComponent : MonoBehaviour
     public void Aim(InputAction.CallbackContext context)
     {
         m_Tank.m_Reticle.GetComponent<ReticleControl>().Move(context.ReadValue<Vector2>());
+    }
+
+    public void LoseStock()
+    {
+        //adjust data in playerData as dmPlayerData
+        pData.data.stock--;
+        pData.data.deaths++;
+
+       // Debug.Log("Player " + PlayID + " has " + data.stock + " stock left");
+       // Debug.Log("Player " + PlayID + " has " + data.deaths + " deaths");
+        
+        if(pData.data.stock <= 0)
+        {
+            GameMode gameMode = GameObject.FindObjectOfType<GameMode>();
+            m_MeshRenderer_Tank.enabled = false;
+            m_MeshRenderer_Gun.enabled = false;
+            m_MeshRenderer_Top.enabled = false;
+            gameObject.GetComponent<BoxCollider>().enabled = false;
+           m_Tank.m_Reticle.GetComponent<ReticleControl>().enabled = false;
+          m_Tank.m_Reticle.GetComponent<Image>().enabled = false;
+
+            gameObject.GetComponent<PlayerComponent>().enabled = false;
+            stockTexts[pData.data.deaths-1].gameObject.active = false;
+            gameMode.EndGame();
+        }else{
+        stockTexts[pData.data.deaths-1].gameObject.active = false;
+        gameObject.transform.position = assignedRespawnPoint.transform.position;
+        }
+      //  gameObject.GetComponent<MeshRenderer>().enabled = false;
+
+      //  gameObject.GetComponent<MeshRenderer>().enabled = true;
     }
 
 }

@@ -26,19 +26,25 @@ public class bullet : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         //Debug.Log("Hit");   
-        if (other.gameObject.tag == "Enemy")
+        if (other.gameObject.tag != gameObject.tag)
         {
-            Destroy(other.gameObject);
-            Destroy(gameObject);
+            if(other.gameObject.GetComponent<PlayerComponent>() != null)
+            {
+                other.gameObject.GetComponent<PlayerComponent>().LoseStock();
+            }
+
         }
     }
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.tag != gameObject.tag)
         {
-            Destroy(collision.gameObject);
-            Destroy(gameObject);
+ if(collision.gameObject.GetComponent<PlayerComponent>() != null)
+            {
+                collision.gameObject.GetComponent<PlayerComponent>().LoseStock();
+            }
+
         }
     }
 }
