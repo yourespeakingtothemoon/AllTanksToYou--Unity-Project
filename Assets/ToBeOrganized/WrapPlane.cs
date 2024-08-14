@@ -20,11 +20,11 @@ public class WrapPlane : MonoBehaviour
             {
               if (planeDir.y > 0)
                 {
-                    colPos.x = pla.x - 1;
+                    colPos.x = pla.x + 2;
                 }
                 else
                 {
-                    colPos.x = pla.x + 1;
+                    colPos.x = pla.x - 2;
                 }
             }
             else
@@ -32,11 +32,11 @@ public class WrapPlane : MonoBehaviour
                 //determine if plane is facing north or south
                 if (planeDir.y > 0)
                 {
-                    colPos.z = pla.z - 1;
+                    colPos.z = pla.z - 2;
                 }
                 else
                 {
-                    colPos.z = pla.z + 1;
+                    colPos.z = pla.z + 2;
                 }
              
             }

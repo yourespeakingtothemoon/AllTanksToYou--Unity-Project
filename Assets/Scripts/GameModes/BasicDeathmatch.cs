@@ -41,6 +41,8 @@ public class BasicDeathmatch : GameMode
     [SerializeField] TextMeshProUGUI[] player1TestingStock;
     [SerializeField] TextMeshProUGUI[] player2TestingStock;
 
+    private List<PlayerComponent> playerComponents = new List<PlayerComponent>();
+
     [SerializeField] private TextMeshProUGUI winnerText;
 void Start()
     {
@@ -62,7 +64,8 @@ void Start()
         playerInput.gameObject.tag = playerCount == 0 ? "Player1" : "Player2";
         //playerInput.gameObject.GetComponent<PlayerComponent>().playerData 
         playerInput.gameObject.GetComponent<PlayerComponent>().pData = new dmPlayerDataWrapper(player);
-        
+        playerComponents.Add(playerInput.gameObject.GetComponent<PlayerComponent>());
+
         playerCount++;
         }
         timeRemaining = TimeLimit;
@@ -77,19 +80,7 @@ void Start()
      timerText.UpdateTime(timeRemaining);
         if (timeRemaining <= 0)
         {
-            //get player with most stock
-            if(playerData[0].stock > playerData[1].stock)
-            {
-                EndGame("Player1");
-            }
-            else if(playerData[0].stock < playerData[1].stock)
-            {
-                EndGame("Player2");
-            }
-            else
-            {
-            EndGame("Draw");
-            }
+            ProcessGameEnd();
         }
        
     }
@@ -120,11 +111,11 @@ void Start()
 
     public override void ProcessGameEnd()
     {
-        if(playerData[0].stock > playerData[1].stock)
+        if(playerComponents[0].GetStock() > playerComponents[1].GetStock())
         {
             EndGame("Player1");
         }
-        else if(playerData[0].stock < playerData[1].stock)
+        else if(playerComponents[0].GetStock() < playerComponents[1].GetStock())
         {
             EndGame("Player2");
         }

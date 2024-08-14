@@ -120,4 +120,9 @@ public class PlayerComponent : MonoBehaviour
       //  gameObject.GetComponent<MeshRenderer>().enabled = true;
     }
 
+    public int GetStock()
+    {
+        return pData.data.stock;
+    }
+
 }
