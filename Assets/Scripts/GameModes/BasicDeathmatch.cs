@@ -40,6 +40,8 @@ public class BasicDeathmatch : GameMode
 
     [SerializeField] TextMeshProUGUI[] player1TestingStock;
     [SerializeField] TextMeshProUGUI[] player2TestingStock;
+
+    [SerializeField] private TextMeshProUGUI winnerText;
 void Start()
     {
         PlayerInput playerInput;
@@ -48,6 +50,7 @@ void Start()
         dmPlayerData player = new dmPlayerData();
         player.stock = stock;
         player.deaths = 0;
+       
         playerData.Add(player);
         playerInput = Instantiate(playerPrefab);
 
@@ -74,7 +77,19 @@ void Start()
      timerText.UpdateTime(timeRemaining);
         if (timeRemaining <= 0)
         {
-            EndGame();
+            //get player with most stock
+            if(playerData[0].stock > playerData[1].stock)
+            {
+                EndGame("Player1");
+            }
+            else if(playerData[0].stock < playerData[1].stock)
+            {
+                EndGame("Player2");
+            }
+            else
+            {
+            EndGame("Draw");
+            }
         }
        
     }
@@ -101,6 +116,54 @@ void Start()
     public override void RemoveEnemy(Enemydummy enemy)
     {
         throw new System.NotImplementedException();
+    }
+
+    public override void ProcessGameEnd()
+    {
+        if(playerData[0].stock > playerData[1].stock)
+        {
+            EndGame("Player1");
+        }
+        else if(playerData[0].stock < playerData[1].stock)
+        {
+            EndGame("Player2");
+        }
+        else
+        {
+            EndGame("Draw");
+        }
+    }
+
+    public override void EndGame(string winCondition)
+    {
+        Debug.Log("Game Over");
+        switch(winCondition)
+        {
+            case "Player1":
+                winnerText.text = "P1 Victory!";
+                winnerText.color = Color.red;
+                winnerText.gameObject.SetActive(true);
+                break;
+            case "Player2":
+                winnerText.text = "P2 Victory!";
+                winnerText.color = Color.blue;
+                 winnerText.gameObject.SetActive(true);
+                break;
+          
+            default:
+                winnerText.text = "Draw!";
+                winnerText.color = Color.white;
+                 winnerText.gameObject.SetActive(true);
+                break;
+        }
+    StartCoroutine(WaitAndGoToMenu());
+        // End Game
+    }
+
+    IEnumerator WaitAndGoToMenu()
+    {
+        yield return new WaitForSeconds(5);
+        SceneManager.LoadScene("MainMenu");
     }
 
 

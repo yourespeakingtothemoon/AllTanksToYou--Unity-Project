@@ -13,6 +13,7 @@ public enum GameGoalType
     Objective
 }
 
+
 public interface IgamePlayerData
 {
 }
@@ -39,4 +40,7 @@ public abstract class GameMode : MonoBehaviour
     public abstract void Initalize();
     public abstract void RemoveEnemy(Enemydummy enemy);
 
+    public abstract void EndGame(string winCondition);
+
+    public abstract void ProcessGameEnd();
 }

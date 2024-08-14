@@ -43,4 +43,17 @@ public class Targets : GameMode
     {
        return TimeLimit.ToString();
     }
+
+    public override void ProcessGameEnd()
+    {
+        if(enemies.Count == 0)
+        {
+            EndGame("Win");
+        }
+    }
+    public override void EndGame(string winCondition)
+    {
+        Debug.Log("Game Over");
+        // End Game
+    }
 }

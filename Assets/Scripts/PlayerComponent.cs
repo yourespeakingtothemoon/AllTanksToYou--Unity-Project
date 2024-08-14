@@ -110,7 +110,7 @@ public class PlayerComponent : MonoBehaviour
 
             gameObject.GetComponent<PlayerComponent>().enabled = false;
             stockTexts[pData.data.deaths-1].gameObject.active = false;
-            gameMode.EndGame();
+            gameMode.ProcessGameEnd();
         }else{
         stockTexts[pData.data.deaths-1].gameObject.active = false;
         gameObject.transform.position = assignedRespawnPoint.transform.position;

@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     int score = 0;
     int health = 100;
     GameManager gameManager;
+    public GameMode gameMode;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +29,7 @@ public class Player : MonoBehaviour
         if (lives <= 0)
         {
             // Game Over
+           // gameManager.EndGame();
         }
     }
 }
