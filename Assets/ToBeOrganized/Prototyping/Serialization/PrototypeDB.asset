@@ -16,6 +16,6 @@ MonoBehaviour:
   - name: Cube (1)
     prefab: {fileID: 4712805603802278225, guid: 84ef14c64e2add04fb26b6f4b68bb4da, type: 3}
     EditorIcon: {fileID: 0}
-  - name: Richochet Wall
+  - name: RichochetWall
     prefab: {fileID: 4712805603802278225, guid: 62b30ba02141d2b4c89b66e9e83740fc, type: 3}
     EditorIcon: {fileID: 0}
