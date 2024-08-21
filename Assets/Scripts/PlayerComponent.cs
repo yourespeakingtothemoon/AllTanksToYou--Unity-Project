@@ -16,6 +16,10 @@ public class PlayerComponent : MonoBehaviour
     [SerializeField] private MeshRenderer m_MeshRenderer_Tank;
     [SerializeField] private MeshRenderer m_MeshRenderer_Gun;
     [SerializeField] private MeshRenderer m_MeshRenderer_Top;
+    [SerializeField] private GameObject ShatterModel;
+    [SerializeField] private bool CrashTheGame = false;
+    [SerializeField] private GameObject m_Explosion;
+    [SerializeField] private AudioSource m_ExplosionSound;
     public TextMeshProUGUI[] stockTexts;
     public GameObject assignedRespawnPoint;
     public dmPlayerDataWrapper pData;
@@ -94,6 +98,9 @@ public class PlayerComponent : MonoBehaviour
         //adjust data in playerData as dmPlayerData
         pData.data.stock--;
         pData.data.deaths++;
+        GameObject explode = Instantiate(m_Explosion,  gameObject.transform.position, Quaternion.identity);
+        m_ExplosionSound.Play();
+       // explode.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
 
        // Debug.Log("Player " + PlayID + " has " + data.stock + " stock left");
        // Debug.Log("Player " + PlayID + " has " + data.deaths + " deaths");
@@ -113,6 +120,14 @@ public class PlayerComponent : MonoBehaviour
             gameMode.ProcessGameEnd();
         }else{
         stockTexts[pData.data.deaths-1].gameObject.active = false;
+        //Shatter crashes the game
+        if(CrashTheGame)
+        {
+        Transform originalPosition = gameObject.transform;
+              Instantiate(ShatterModel, originalPosition);
+        }
+      
+        //Instantiate explosion
         gameObject.transform.position = assignedRespawnPoint.transform.position;
         }
       //  gameObject.GetComponent<MeshRenderer>().enabled = false;

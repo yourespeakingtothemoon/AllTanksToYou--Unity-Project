@@ -20,15 +20,24 @@ public class LevelEditManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Transform buttonTransform = canvas.transform;
         //create button for each object in levelObjectDB
         foreach (LevelObjectLiteral obj in levelObjectDB.levelObjects)
         {
+//instantiate each button without overlap
 
             Button button = Instantiate(buttonPrefab, canvas.transform);
             
             button.onClick.AddListener(() => SetSelectedObject(obj.prefab));
             button.GetComponentInChildren<Text>().text = obj.name;
             
+        }
+        //count the number of buttons
+        int buttonCount = buttonTransform.childCount;
+        //set buttons in a grid
+        for (int i = 0; i < buttonCount; i++)
+        {
+            buttonTransform.GetChild(i).GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -i * 30);
         }
         
     }

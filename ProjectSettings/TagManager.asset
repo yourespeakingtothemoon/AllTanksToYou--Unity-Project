@@ -8,6 +8,8 @@ TagManager:
   - Enemy
   - Player1
   - Player2
+  - FxTemporaire
+  - Ricochet
   layers:
   - Default
   - TransparentFX

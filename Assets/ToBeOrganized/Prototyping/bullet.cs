@@ -44,7 +44,15 @@ public class bullet : MonoBehaviour
             {
                 collision.gameObject.GetComponent<PlayerComponent>().LoseStock();
             }
+            if(collision.gameObject.tag == "Richochet")
+            {
+                Vector3 normal = collision.contacts[0].normal;
+                Vector3 reflect = Vector3.Reflect(transform.forward, normal);
+                transform.forward = reflect;
+            }
 
         }
+
     }
+
 }

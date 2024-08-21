@@ -18,7 +18,11 @@ public class Tank : MonoBehaviour
     [SerializeField] private GameObject m_BulletPrefab;
     [SerializeField] public GameObject m_Reticle;
     [SerializeField] private Transform m_FirePoint;
+        [SerializeField] private Transform m_FlashPoint;
     [SerializeField] public BulletFaction m_Faction;
+    [SerializeField] public GameObject flashEffect;
+    [SerializeField] public AudioSource m_ShootSound;
+    [SerializeField] public AudioSource m_MovementSound;
 
 
     // Start is called before the first frame update
@@ -53,13 +57,25 @@ public class Tank : MonoBehaviour
         float y = direction.y;
         yPedal = y;
         xPedal = x;
-
+    
     }
 
 
     public void Onward(float accel)
     {
         currentMovementForce = accel * m_Speed * Time.deltaTime * transform.forward;
+            if (currentMovementForce.magnitude > 0)
+        {
+          if(m_MovementSound.isPlaying == false)
+            {
+                m_MovementSound.Play();
+            }
+        }
+        else
+        {
+            m_MovementSound.Stop();
+        }
+
 
     }
 
@@ -74,6 +90,8 @@ public class Tank : MonoBehaviour
     {
        
         GameObject bullet = Instantiate(m_BulletPrefab, m_FirePoint.transform.position, m_Barrel.transform.rotation);
+        Instantiate(flashEffect, m_FlashPoint.transform);
+        m_ShootSound.Play();
         bullet.tag = gameObject.tag;
     }
     public void Reset()
