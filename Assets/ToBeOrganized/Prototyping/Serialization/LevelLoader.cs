@@ -24,6 +24,7 @@ public class LevelLoader : MonoBehaviour
         {
             GameObject go = Instantiate(levelObjectDB.GetLevelObject(obj.name));
             go.transform.position = new Vector3(obj.x, obj.y, obj.z);
+            Debug.Log("Instantiated " + obj.name + " at " + go.transform.position);
         }
 
 

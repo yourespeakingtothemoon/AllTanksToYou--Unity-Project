@@ -40,18 +40,20 @@ public class bullet : MonoBehaviour
     {
         if (collision.gameObject.tag != gameObject.tag)
         {
- if(collision.gameObject.GetComponent<PlayerComponent>() != null)
+             if(collision.gameObject.GetComponent<PlayerComponent>() != null)
             {
                 collision.gameObject.GetComponent<PlayerComponent>().LoseStock();
             }
-            if(collision.gameObject.tag == "Richochet")
+           
+
+        }
+
+         if(collision.gameObject.tag == "Ricochet")
             {
                 Vector3 normal = collision.contacts[0].normal;
                 Vector3 reflect = Vector3.Reflect(transform.forward, normal);
                 transform.forward = reflect;
             }
-
-        }
 
     }
 
