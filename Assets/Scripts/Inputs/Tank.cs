@@ -63,7 +63,9 @@ public class Tank : MonoBehaviour
 
     public void Onward(float accel)
     {
-        currentMovementForce = accel * m_Speed * Time.deltaTime * transform.forward;
+        //ease in and out
+        currentMovementForce = Vector3.Lerp(currentMovementForce, accel * m_Speed * Time.deltaTime * transform.forward, 0.1f);
+       // currentMovementForce = accel * m_Speed * Time.deltaTime * transform.forward;
             if (currentMovementForce.magnitude > 0)
         {
           if(m_MovementSound.isPlaying == false)
@@ -73,6 +75,7 @@ public class Tank : MonoBehaviour
         }
         else
         {
+            
             m_MovementSound.Stop();
         }
 

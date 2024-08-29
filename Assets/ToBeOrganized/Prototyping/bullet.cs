@@ -42,6 +42,10 @@ public class bullet : MonoBehaviour
         {
              if(collision.gameObject.GetComponent<PlayerComponent>() != null)
             {
+                if(collision.gameObject.GetComponent<PlayerComponent>().iFramesOn)
+                {
+                    return;
+                }
                 collision.gameObject.GetComponent<PlayerComponent>().LoseStock();
             }
            

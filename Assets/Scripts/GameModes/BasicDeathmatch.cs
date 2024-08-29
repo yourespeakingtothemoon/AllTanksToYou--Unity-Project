@@ -62,6 +62,7 @@ void Start()
         playerInput.gameObject.GetComponent<PlayerComponent>().stockTexts = playerCount == 0 ? player1TestingStock : player2TestingStock;
         playerInput.gameObject.GetComponent<PlayerComponent>().PlayID = i + 1;
         playerInput.gameObject.tag = playerCount == 0 ? "Player1" : "Player2";
+        playerInput.gameObject.GetComponent<PlayerComponent>().m_Gamepad = playerInput.GetComponent<PlayerInput>().devices[0] as Gamepad;
         //playerInput.gameObject.GetComponent<PlayerComponent>().playerData 
         playerInput.gameObject.GetComponent<PlayerComponent>().pData = new dmPlayerDataWrapper(player);
         playerComponents.Add(playerInput.gameObject.GetComponent<PlayerComponent>());

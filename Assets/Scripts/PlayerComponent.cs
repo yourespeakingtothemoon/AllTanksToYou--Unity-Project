@@ -24,6 +24,15 @@ public class PlayerComponent : MonoBehaviour
     public GameObject assignedRespawnPoint;
     public dmPlayerDataWrapper pData;
 
+    public Gamepad m_Gamepad;
+
+    public bool iFramesOn = false;
+    public float iFramesTime = 2.0f;
+
+    [SerializeField] private List<Material> TestingMats;
+
+    [SerializeField] private MeshRenderer m_MeshRenderer;
+
     [SerializeField]public IgamePlayerData playerData;
     // Start is called before the first frame update
     void Start()
@@ -39,9 +48,11 @@ public class PlayerComponent : MonoBehaviour
         {
             case 1:
             m_Tank.m_Reticle.GetComponent<ReticleControl>().SetColor(Color.red);
+            m_MeshRenderer.material = TestingMats[0];
             break;
             case 2:
             m_Tank.m_Reticle.GetComponent<ReticleControl>().SetColor(Color.blue);
+            m_MeshRenderer.material = TestingMats[1];
             break;
             case 3:
             m_Tank.m_Reticle.GetComponent<ReticleControl>().SetColor(Color.yellow);
@@ -69,6 +80,15 @@ public class PlayerComponent : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(iFramesOn)
+        {
+            iFramesTime -= Time.deltaTime;
+            if(iFramesTime <= 0)
+            {
+                iFramesOn = false;
+                iFramesTime = 2.0f;
+            }
+        }
         
     }
 
@@ -80,6 +100,11 @@ public class PlayerComponent : MonoBehaviour
 
     public void Shoot()
     {
+        if(m_Gamepad != null)
+        {
+            //haptics
+            //m_Gamepad.haptics.SimpleRumble(0.5f, 0.5f, 0.1f);
+        }
         m_Tank.Shoot();
     }
 
@@ -96,10 +121,16 @@ public class PlayerComponent : MonoBehaviour
     public void LoseStock()
     {
         //adjust data in playerData as dmPlayerData
+       /* if(m_Gamepad != null)
+        {
+            //haptics
+            m_Gamepad.
+        }*/
         pData.data.stock--;
         pData.data.deaths++;
         GameObject explode = Instantiate(m_Explosion,  gameObject.transform.position, Quaternion.identity);
         m_ExplosionSound.Play();
+          iFramesOn = true;
        // explode.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
 
        // Debug.Log("Player " + PlayID + " has " + data.stock + " stock left");
@@ -130,6 +161,7 @@ public class PlayerComponent : MonoBehaviour
         //Instantiate explosion
         gameObject.transform.position = assignedRespawnPoint.transform.position;
         }
+      
       //  gameObject.GetComponent<MeshRenderer>().enabled = false;
 
       //  gameObject.GetComponent<MeshRenderer>().enabled = true;

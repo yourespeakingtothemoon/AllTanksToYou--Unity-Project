@@ -19,3 +19,12 @@ MonoBehaviour:
   - name: RicochetWall
     prefab: {fileID: 4712805603802278225, guid: 62b30ba02141d2b4c89b66e9e83740fc, type: 3}
     EditorIcon: {fileID: 0}
+  - name: rLarge
+    prefab: {fileID: 5153007481977911664, guid: ffb7780003a85a241bd653189eb9cf0d, type: 3}
+    EditorIcon: {fileID: 0}
+  - name: rTall
+    prefab: {fileID: 2305947215531173304, guid: 70d8f6e5e04c6b14eb01cd02a965b738, type: 3}
+    EditorIcon: {fileID: 0}
+  - name: tumbleweed
+    prefab: {fileID: 2196036564983814480, guid: 4f6750d6343b33842806e4a62868ad8f, type: 3}
+    EditorIcon: {fileID: 0}
