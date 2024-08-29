@@ -6,10 +6,10 @@ Hello! Welcome to the Open Source preview of the upcoming Drachenblut SoftWorks 
 
 ## Table of Contents
 
-+ [Game Guide and Screenshots](https://github.com/yourespeakingtothemoon/AllTanksToYou--Unity-Project/edit/master/README.md#game-guide-and-screenshots)
-+ [Technical Details](https://github.com/yourespeakingtothemoon/AllTanksToYou--Unity-Project/edit/master/README.md#technical-details)
-+ [Level Serialization Usage](https://github.com/yourespeakingtothemoon/AllTanksToYou--Unity-Project/edit/master/README.md#level-serialization-usage)
-+ [Development Roadmap](https://github.com/yourespeakingtothemoon/AllTanksToYou--Unity-Project/edit/master/README.md#development-roadmap)
++ [Game Guide and Screenshots](https://github.com/yourespeakingtothemoon/AllTanksToYou--Unity-Project/tree/master?tab=readme-ov-file#game-guide-and-screenshots)
++ [Technical Details](https://github.com/yourespeakingtothemoon/AllTanksToYou--Unity-Project/tree/master?tab=readme-ov-file#technical-details)
++ [Level Serialization Usage](https://github.com/yourespeakingtothemoon/AllTanksToYou--Unity-Project/tree/master?tab=readme-ov-file#level-serialization-usage)
++ [Development Roadmap](https://github.com/yourespeakingtothemoon/AllTanksToYou--Unity-Project/tree/master?tab=readme-ov-file#development-roadmap)
 
 ## Game Guide and Screenshots
 
